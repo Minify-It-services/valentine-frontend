@@ -25,7 +25,7 @@ function App() {
   const submitForApproval = async (e) => {
     e.preventDefault();
     if(message!==''){
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/submit`, { message: message }, { 'Content-Type': 'application/json' })
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}submit`, { message: message }, { 'Content-Type': 'application/json' })
         .then(res => {
           if(res.data.status==='success'){
             setAlertPop({
