@@ -11,7 +11,7 @@ function App() {
     message: '',
   });
 
-  const getMessages = async () => await axios.get('http://localhost:8000')
+  const getMessages = async () => await axios.get(process.env.REACT_APP_BACKEND_URL)
   .then(res => {
     if(res.data.status==='success'){
       setMessages(res.data.data)
@@ -25,7 +25,7 @@ function App() {
   const submitForApproval = async (e) => {
     e.preventDefault();
     if(message!==''){
-      await axios.post('http://localhost:8000/submit', { message: message }, { 'Content-Type': 'application/json' })
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/submit`, { message: message }, { 'Content-Type': 'application/json' })
         .then(res => {
           if(res.data.status==='success'){
             setAlertPop({
